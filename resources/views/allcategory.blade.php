@@ -1352,9 +1352,21 @@ Top Bar .top-bar {
     display: none !important;
   }
   .trust-logos {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center;
+    gap: 10px !important;
+    width: 100%;
+  }
+  .trust-logos .logo-item {
+    width: auto !important;
+    flex: 1 1 0 !important;
+    overflow: hidden !important;
+  }
+  .trust-logos .logo-item img {
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 35px !important;
   }
   .trust-logos .logo-item:nth-child(n+5) {
     display: none !important;

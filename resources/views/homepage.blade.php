@@ -1,3 +1,4 @@
+@include('include.header')
  <style>
 /* Base Styles & Variables */
 :root {
@@ -27,6 +28,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   justify-content: center;
+  padding-top: 115px; /* Fixed header height (top bar + navbar) */
 }
 .container {
   width: 100%;
@@ -550,11 +552,7 @@ h3 {
 .home-hero {
   padding: 80px 0;
   border-bottom: 1px solid var(--border-color);
-  background: radial-gradient(
-    circle at center,
-    rgba(30, 30, 30, 0.8) 0%,
-    var(--bg-dark) 100%
-  );
+  background: #1A1A1A;
 }
 
 .home-hero-content {

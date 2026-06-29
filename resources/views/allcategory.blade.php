@@ -1,4 +1,4 @@
-
+@include('include.header')
 <style>
 /* Base Styles & Variables */
 :root {
@@ -27,6 +27,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
+  padding-top: 115px; /* Fixed header height (top bar + navbar) */
 }
 
 .container {
@@ -3146,16 +3147,13 @@ Top Bar .top-bar {
                         <span>
                             <i class="fa-solid fa-angles-right"
                                 style="font-size: 10px; margin: 0 8px; color: #a0a0a0;"></i>
-                            Box By Industry
+                            {{ $breadcrumbLabel ?? 'Box By Industry' }}
                         </span>
                     </div>
 
-                    <h1><span class="highlight-yellow">Rigid Boxes</span> for Every<br>Industry</h1>
+                    <h1>{{ $heroTitle ?? 'Rigid Boxes for Every' }}<span class="highlight-yellow">{{ $heroHighlight ?? 'Industry' }}</span></h1>
 
-                    <p>Tailor-made packaging solutions designed to reflect the unique demands of your industry. From
-                        opulent jewellery boxes and luxury retail packaging to sleek tech solutions, we combine premium
-                        craftsmanship, functionality, and attention to detail to elevate your brand and create a
-                        memorable unboxing experience.</p>
+                    <p>{{ $heroDesc ?? 'Tailor-made packaging solutions designed to reflect the unique demands of your industry.' }}</p>
 
                     <a href="#" class="btn btn-yellow">Design Custom Boxes</a>
                 </div>
@@ -3195,9 +3193,8 @@ Top Bar .top-bar {
         <section class="browse-industry-section">
             <div class="browse-header">
                 <span class="section-badge outline badge-yellow">CATEGORIES</span>
-                <h2>Browse by Industry</h2>
-                <p>Click on any industry to explore rigid box designs tailored to its unique packaging needs and
-                    brand requirements.</p>
+                <h2>{{ $browseSectionTitle ?? 'Browse by Industry' }}</h2>
+                <p>{{ $browseSectionDesc ?? 'Click on any industry to explore rigid box designs tailored to its unique packaging needs and brand requirements.' }}</p>
             </div>
 
             <div class="browse-grid">
@@ -3811,3 +3808,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 </body>
+</html>

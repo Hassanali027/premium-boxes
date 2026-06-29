@@ -1,4 +1,5 @@
-
+@include('include.header')
+<style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -88,13 +89,12 @@ img { display: block; max-width: 100%; }
 
 /* Two-column grid */
 .cp-hero-grid {
-    margin-top: -170px;
+    margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 48px;
-    margin-bottom: 24px;
-    margin-bottom: -79px;
+    margin-bottom: 60px;
 }
 
 /* LEFT — text */
@@ -1480,10 +1480,10 @@ img { display: block; max-width: 100%; }
 }
 
 
-
-
+</style>
 
 <section class="cp-hero">
+
     <div class="cp-wrap">
 
         <!-- Breadcrumb -->

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AllCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// All Category Listing Routes (allcategory.blade.php)
+Route::get('/box-by-industry', [AllCategoryController::class, 'boxByIndustry'])->name('box-by-industry');
+Route::get('/box-by-style', [AllCategoryController::class, 'boxByStyle'])->name('box-by-style');
+Route::get('/box-by-material', [AllCategoryController::class, 'boxByMaterial'])->name('box-by-material');
+Route::get('/promotional', [AllCategoryController::class, 'promotional'])->name('promotional');
+
+// Individual Category Page (catagorypage.blade.php)
+// URL example: /category/industry/cosmetics-beauty
+Route::get('/category/{type}/{slug}', [AllCategoryController::class, 'categoryPage'])->name('category.page');
+

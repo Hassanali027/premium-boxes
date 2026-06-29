@@ -2572,7 +2572,7 @@ section + section {
     font-size: 0.85rem;
     line-height: 1.6;
   }
-  
+
   .sectors-header p br {
     display: none;
   }
@@ -3831,7 +3831,7 @@ section + section {
             <div class="testimonial-grid">
 
                 <div class="testimonial-card">
-                    <img src="./assets/profile picture.jfif" alt="">
+                    <img src="{{asset('images/home/testimonal-profileimage.svg')}}" alt="Mike Torello" class="avatar-img">
                     <p>
                         We've been working with RigidBox Pro for 3 years now.
                         Their consistency and attention to detail make them our
@@ -3843,7 +3843,7 @@ section + section {
                 </div>
 
                 <div class="testimonial-card">
-                    <img src="./assets/profile picture.jfif" alt="">
+                      <img src="{{asset('images/home/testimonal-profileimage.svg')}}"alt="Mike Torello" class="avatar-img">
                     <p>
                         We've been working with RigidBox Pro for 3 years now.
                         Their consistency and attention to detail make them our
@@ -3855,7 +3855,7 @@ section + section {
                 </div>
 
                 <div class="testimonial-card">
-                    <img src="./assets/profile picture.jfif" alt="">
+                    <img src="{{asset('images/home/testimonal-profileimage.svg')}}" alt="Mike Torello" class="avatar-img">
                     <p>
                         We've been working with RigidBox Pro for 3 years now.
                         Their consistency and attention to detail make them our
@@ -3869,8 +3869,8 @@ section + section {
             </div>
 
             <div class="testimonial-nav">
-                <button><i class="fas fa-chevron-left"></i></button>
-                <button><i class="fas fa-chevron-right"></i></button>
+                <button><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                <button><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
 
         </div>

@@ -893,7 +893,7 @@ Top Bar .top-bar {
 
 .industry-hero-left {
   flex: 1;
-  max-width: 600px;
+  max-width: 800px; /* Increased to allow one line heading */
 }
 
 .industry-hero-left .breadcrumb {
@@ -910,6 +910,7 @@ Top Bar .top-bar {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 20px;
+  white-space: nowrap; /* Forces heading onto one line */
 }
 
 .highlight-yellow {
@@ -1335,6 +1336,7 @@ Top Bar .top-bar {
   }
   .industry-hero-left h1 {
     font-size: 2.2rem;
+    white-space: normal; /* Ensure it wraps on mobile */
   }
   .hero-image-wrapper {
     margin-top: 40px;
@@ -1346,10 +1348,16 @@ Top Bar .top-bar {
     padding: 30px 20px;
     gap: 20px;
   }
+  .trust-reviews {
+    display: none !important;
+  }
   .trust-logos {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+  }
+  .trust-logos .logo-item:nth-child(n+5) {
+    display: none !important;
   }
 
   /* Browse By Industry */
@@ -1845,14 +1853,15 @@ Top Bar .top-bar {
 /* --- Cards Layout Grid (Desktop) --- */
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(3, 387.5px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 37.4px;
   width: 100%;
   justify-content: center;
 }
 
 .testimonial-card {
-  width: 387.5px;
+  width: 100%;
+  max-width: 387.5px;
   height: 229.8px;
   border: 1px solid rgba(245, 197, 66, 0.2);
   border-radius: 20px;
@@ -2293,8 +2302,8 @@ Top Bar .top-bar {
     height: auto;
   }
   .testimonial-grid {
-    grid-template-columns: repeat(2, 387.5px);
-    gap: 30px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
   }
 }
 
@@ -2488,12 +2497,11 @@ Top Bar .top-bar {
 
 /* --- Component Fields Controls --- */
 .form-group input,
-.form-group select,
 .form-group textarea {
   width: 100%;
   height: 46px;
-  background-color: var(--bg-darker); /* Keeping dark theme inputs */
-  border: 0.2px solid #727272; /* Required layout boundary rules */
+  background-color: var(--bg-darker);
+  border: 0.2px solid #727272;
   border-radius: 8px;
   padding: 12px 16px;
   color: var(--text-main);
@@ -2502,12 +2510,30 @@ Top Bar .top-bar {
   outline: none;
 }
 
+.form-group select {
+  width: 100%;
+  height: 46px;
+  background-color: var(--bg-darker);
+  border: 0.2px solid #727272;
+  border-radius: 8px;
+  padding: 12px 35px 12px 16px;
+  color: var(--text-main);
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+}
+
 .form-group textarea {
   height: 105px;
   resize: none;
 }
 
-/* File Upload Wrapper Styling */
 /* File Upload Wrapper Styling */
 .file-upload-wrapper {
   display: flex;
@@ -2531,17 +2557,16 @@ Top Bar .top-bar {
 
 /* --- BULLETPROOF UPLOAD BUTTON --- */
 .upload-btn {
-  background-color: var(--accent-gold) !important; /* Force gold bg */
-  color: var(--bg-darker) !important; /* Force dark text color override */
+  background-color: var(--accent-gold) !important;
+  color: var(--bg-darker) !important;
 
-  /* Kill native element defaults (links, buttons, labels) */
   border: none;
   outline: none;
   text-decoration: none;
   -webkit-appearance: none;
   appearance: none;
 
-  font-weight: 700;
+  font-weight: 900;
   padding: 0 20px;
 
   display: flex;
@@ -2995,7 +3020,7 @@ Top Bar .top-bar {
             <div class="industry-hero-content">
                 <div class="industry-hero-right">
                     <div class="hero-image-wrapper">
-                        <img src="./assets/Box packing home banner.png" alt="Premium packaging boxes"
+                        <img src="{{ asset('images/home/Boxpacking-homebanner.svg')}}" alt="Premium packaging boxes"
                             class="hero-main-img">
                     </div>
                 </div>
@@ -3010,7 +3035,7 @@ Top Bar .top-bar {
                         </span>
                     </div>
 
-                    <h1>{{ $heroTitle ?? 'Rigid Boxes for Every' }}<span class="highlight-yellow">{{ $heroHighlight ?? 'Industry' }}</span></h1>
+                    <h1>{{ $heroTitle ?? 'Rigid Boxes for Every ' }}<span class="highlight-yellow">{{ $heroHighlight ?? 'Industry' }}</span></h1>
 
                     <p>{{ $heroDesc ?? 'Tailor-made packaging solutions designed to reflect the unique demands of your industry.' }}</p>
 
@@ -3020,12 +3045,12 @@ Top Bar .top-bar {
 
             <div class="trust-bar">
                 <div class="trust-reviews">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="stars" style="display: flex; gap: 4px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     </div>
                     <a href="#" class="review-link">5.0 Google Reviews</a>
                 </div>
@@ -3278,7 +3303,7 @@ Top Bar .top-bar {
                 <!-- Card 1 -->
                 <div class="testimonial-card">
                     <div class="avatar-wrapper">
-                        <img src="./assets/profile image.jfif" alt="Mike Torello" class="avatar-img">
+                        <img src="{{asset('images/home/testimonal-profileimage.svg')}}"alt="Mike Torello" class="avatar-img">
                     </div>
                     <p class="testimonial-text">
                         "We've been working with RigidBox Pro for 3 years now. Their consistency, attention to detail,
@@ -3291,7 +3316,7 @@ Top Bar .top-bar {
                 <!-- Card 2 -->
                 <div class="testimonial-card">
                     <div class="avatar-wrapper">
-                        <img src="./assets/profile image.jfif" alt="Mike Torello" class="avatar-img">
+                       <img src="{{asset('images/home/testimonal-profileimage.svg')}}"alt="Mike Torello" class="avatar-img">
                     </div>
                     <p class="testimonial-text">
                         "We've been working with RigidBox Pro for 3 years now. Their consistency, attention to detail,
@@ -3304,7 +3329,7 @@ Top Bar .top-bar {
                 <!-- Card 3 -->
                 <div class="testimonial-card">
                     <div class="avatar-wrapper">
-                        <img src="./assets/profile image1.jfif" alt="Mike Torello" class="avatar-img">
+                        <img src="{{asset('images/home/testimonal-profileimage.svg')}}"alt="Mike Torello" class="avatar-img">
                     </div>
                     <p class="testimonial-text">
                         "We've been working with RigidBox Pro for 3 years now. Their consistency, attention to detail,
@@ -3536,7 +3561,8 @@ Top Bar .top-bar {
             <div class="elevate-container">
 
                 <div class="elevate-image-col">
-                    <img src="./assets/Box Collage.png" alt="Custom colorful design boxes" class="elevate-main-img">
+
+                    <img src="{{asset('images/home/Elevate-boxes.svg')}}" alt="Custom colorful design boxes" class="elevate-main-img">
                 </div>
 
                 <div class="elevate-content-col">

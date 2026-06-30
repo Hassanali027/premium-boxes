@@ -1,4 +1,4 @@
-
+<style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -1479,7 +1479,7 @@ img { display: block; max-width: 100%; }
     .pg-cta-btn   { font-size: 4vw; padding: 3vw 7vw; }
 }
 
-
+</style>
 
 
 
@@ -1919,7 +1919,7 @@ img { display: block; max-width: 100%; }
 
     </div>
 </section>
-
+<script>
 document.addEventListener('DOMContentLoaded', function () {
 
     // ── Product cards ──
@@ -2037,5 +2037,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
+</script>
 

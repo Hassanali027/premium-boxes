@@ -1,4 +1,4 @@
-
+@include('include.header')
 <style>
 /* Base Styles & Variables */
 :root {
@@ -27,6 +27,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
+  padding-top: 115px; /* Fixed header height (top bar + navbar) */
 }
 
 .container {
@@ -892,7 +893,7 @@ Top Bar .top-bar {
 
 .industry-hero-left {
   flex: 1;
-  max-width: 600px;
+  max-width: 800px; /* Increased to allow one line heading */
 }
 
 .industry-hero-left .breadcrumb {
@@ -909,6 +910,7 @@ Top Bar .top-bar {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 20px;
+  white-space: nowrap; /* Forces heading onto one line */
 }
 
 .highlight-yellow {
@@ -1334,6 +1336,7 @@ Top Bar .top-bar {
   }
   .industry-hero-left h1 {
     font-size: 2.2rem;
+    white-space: normal; /* Ensure it wraps on mobile */
   }
   .hero-image-wrapper {
     margin-top: 40px;
@@ -1345,10 +1348,28 @@ Top Bar .top-bar {
     padding: 30px 20px;
     gap: 20px;
   }
+  .trust-reviews {
+    display: none !important;
+  }
   .trust-logos {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center;
+    gap: 10px !important;
+    width: 100%;
+  }
+  .trust-logos .logo-item {
+    width: auto !important;
+    flex: 1 1 0 !important;
+    overflow: hidden !important;
+  }
+  .trust-logos .logo-item img {
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 35px !important;
+  }
+  .trust-logos .logo-item:nth-child(n+5) {
+    display: none !important;
   }
 
   /* Browse By Industry */
@@ -1780,147 +1801,6 @@ Top Bar .top-bar {
   border: 1px solid var(--accent-gold);
 }
 
-/* RESPONSIVE */
-/*
-@media (max-width: 1280px) {
-  .customize-grid {
-    grid-template-columns: repeat(2, 292px);
-  }
-}
-
-
-/* --- Testimonal Section Container --- */
-/* .testimonial-section {
-  width: 100%;
-  max-width: 1440px;
-  min-height: 581px;
-  background-color: var(--bg-dark);
-  margin: 0 auto;
-  padding: 42px 100px 60px 100px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: "Inter", sans-serif;
-} */
-
-/* --- Header Layout --- */
-/* .testimonial-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 44px;
-}
-
-.testimonial-badge {
-  width: 150px;
-  height: 38px;
-  border: 1px solid var(--accent-gold);
-  border-radius: 20px;
-  color: var(--accent-gold);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 21px;
-}
-
-.testimonial-header h2 {
-  max-width: 396px;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 30px;
-  color: var(--text-main);
-  margin: 0 0 19px 0;
-}
-
-.testimonial-header .subtitle {
-  max-width: 445px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19.54px;
-  color: var(--text-muted);
-  margin: 0;
-} */
-
-/* --- Cards Layout Grid (Desktop) --- */
-/* .testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 387.5px);
-  gap: 37.4px;
-  width: 100%;
-  justify-content: center;
-}
-
-.testimonial-card {
-  width: 387.5px;
-  height: 229.8px;
-  border: 1px solid rgba(245, 197, 66, 0.2);
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.02);
-  position: relative;
-  box-sizing: border-box;
-  padding: 50px 45px 30px 45px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-} */
-
-/* --- Avatar Setup --- */
-/* .avatar-wrapper {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: var(--bg-dark);
-  padding: 4px;
-  box-sizing: border-box;
-}
-
-.avatar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-} */
-
-/* --- Typography Content Inside Cards --- */
-/* .testimonial-text {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  color: var(--text-muted);
-  margin: 0 0 16px 0;
-  height: 80px;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.client-name {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 17.5px;
-  color: var(--accent-gold);
-  margin: 0 0 6px 0;
-}
-
-.client-role {
-  font-family: "Montserrat", sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 17.5px;
-  color: var(--text-muted);
-} */
 /* ==========================================================================
    1. GLOBAL & DESKTOP TESTIMONIAL LAYOUT (Your exact 1440px Specs)
    ========================================================================== */
@@ -1985,14 +1865,15 @@ Top Bar .top-bar {
 /* --- Cards Layout Grid (Desktop) --- */
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(3, 387.5px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 37.4px;
   width: 100%;
   justify-content: center;
 }
 
 .testimonial-card {
-  width: 387.5px;
+  width: 100%;
+  max-width: 387.5px;
   height: 229.8px;
   border: 1px solid rgba(245, 197, 66, 0.2);
   border-radius: 20px;
@@ -2433,8 +2314,8 @@ Top Bar .top-bar {
     height: auto;
   }
   .testimonial-grid {
-    grid-template-columns: repeat(2, 387.5px);
-    gap: 30px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
   }
 }
 
@@ -2628,12 +2509,11 @@ Top Bar .top-bar {
 
 /* --- Component Fields Controls --- */
 .form-group input,
-.form-group select,
 .form-group textarea {
   width: 100%;
   height: 46px;
-  background-color: var(--bg-darker); /* Keeping dark theme inputs */
-  border: 0.2px solid #727272; /* Required layout boundary rules */
+  background-color: var(--bg-darker);
+  border: 0.2px solid #727272;
   border-radius: 8px;
   padding: 12px 16px;
   color: var(--text-main);
@@ -2642,12 +2522,30 @@ Top Bar .top-bar {
   outline: none;
 }
 
+.form-group select {
+  width: 100%;
+  height: 46px;
+  background-color: var(--bg-darker);
+  border: 0.2px solid #727272;
+  border-radius: 8px;
+  padding: 12px 35px 12px 16px;
+  color: var(--text-main);
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+}
+
 .form-group textarea {
   height: 105px;
   resize: none;
 }
 
-/* File Upload Wrapper Styling */
 /* File Upload Wrapper Styling */
 .file-upload-wrapper {
   display: flex;
@@ -2671,17 +2569,16 @@ Top Bar .top-bar {
 
 /* --- BULLETPROOF UPLOAD BUTTON --- */
 .upload-btn {
-  background-color: var(--accent-gold) !important; /* Force gold bg */
-  color: var(--bg-darker) !important; /* Force dark text color override */
+  background-color: var(--accent-gold) !important;
+  color: var(--bg-darker) !important;
 
-  /* Kill native element defaults (links, buttons, labels) */
   border: none;
   outline: none;
   text-decoration: none;
   -webkit-appearance: none;
   appearance: none;
 
-  font-weight: 700;
+  font-weight: 900;
   padding: 0 20px;
 
   display: flex;
@@ -3135,7 +3032,7 @@ Top Bar .top-bar {
             <div class="industry-hero-content">
                 <div class="industry-hero-right">
                     <div class="hero-image-wrapper">
-                        <img src="./assets/Box packing home banner.png" alt="Premium packaging boxes"
+                        <img src="{{ asset('images/home/Boxpacking-homebanner.svg')}}" alt="Premium packaging boxes"
                             class="hero-main-img">
                     </div>
                 </div>
@@ -3146,16 +3043,13 @@ Top Bar .top-bar {
                         <span>
                             <i class="fa-solid fa-angles-right"
                                 style="font-size: 10px; margin: 0 8px; color: #a0a0a0;"></i>
-                            Box By Industry
+                            {{ $breadcrumbLabel ?? 'Box By Industry' }}
                         </span>
                     </div>
 
-                    <h1><span class="highlight-yellow">Rigid Boxes</span> for Every<br>Industry</h1>
+                    <h1>{{ $heroTitle ?? 'Rigid Boxes for Every ' }}<span class="highlight-yellow">{{ $heroHighlight ?? 'Industry' }}</span></h1>
 
-                    <p>Tailor-made packaging solutions designed to reflect the unique demands of your industry. From
-                        opulent jewellery boxes and luxury retail packaging to sleek tech solutions, we combine premium
-                        craftsmanship, functionality, and attention to detail to elevate your brand and create a
-                        memorable unboxing experience.</p>
+                    <p>{{ $heroDesc ?? 'Tailor-made packaging solutions designed to reflect the unique demands of your industry.' }}</p>
 
                     <a href="#" class="btn btn-yellow">Design Custom Boxes</a>
                 </div>
@@ -3163,12 +3057,12 @@ Top Bar .top-bar {
 
             <div class="trust-bar">
                 <div class="trust-reviews">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="stars" style="display: flex; gap: 4px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     </div>
                     <a href="#" class="review-link">5.0 Google Reviews</a>
                 </div>
@@ -3195,9 +3089,8 @@ Top Bar .top-bar {
         <section class="browse-industry-section">
             <div class="browse-header">
                 <span class="section-badge outline badge-yellow">CATEGORIES</span>
-                <h2>Browse by Industry</h2>
-                <p>Click on any industry to explore rigid box designs tailored to its unique packaging needs and
-                    brand requirements.</p>
+                <h2>{{ $browseSectionTitle ?? 'Browse by Industry' }}</h2>
+                <p>{{ $browseSectionDesc ?? 'Click on any industry to explore rigid box designs tailored to its unique packaging needs and brand requirements.' }}</p>
             </div>
 
             <div class="browse-grid">
@@ -3422,7 +3315,7 @@ Top Bar .top-bar {
                 <!-- Card 1 -->
                 <div class="testimonial-card">
                     <div class="avatar-wrapper">
-                        <img src="./assets/profile image.jfif" alt="Mike Torello" class="avatar-img">
+                        <img src="{{asset('images/home/testimonal-profileimage.svg')}}"alt="Mike Torello" class="avatar-img">
                     </div>
                     <p class="testimonial-text">
                         "We've been working with RigidBox Pro for 3 years now. Their consistency, attention to detail,
@@ -3435,7 +3328,7 @@ Top Bar .top-bar {
                 <!-- Card 2 -->
                 <div class="testimonial-card">
                     <div class="avatar-wrapper">
-                        <img src="./assets/profile image.jfif" alt="Mike Torello" class="avatar-img">
+                       <img src="{{asset('images/home/testimonal-profileimage.svg')}}"alt="Mike Torello" class="avatar-img">
                     </div>
                     <p class="testimonial-text">
                         "We've been working with RigidBox Pro for 3 years now. Their consistency, attention to detail,
@@ -3448,7 +3341,7 @@ Top Bar .top-bar {
                 <!-- Card 3 -->
                 <div class="testimonial-card">
                     <div class="avatar-wrapper">
-                        <img src="./assets/profile image1.jfif" alt="Mike Torello" class="avatar-img">
+                        <img src="{{asset('images/home/testimonal-profileimage.svg')}}"alt="Mike Torello" class="avatar-img">
                     </div>
                     <p class="testimonial-text">
                         "We've been working with RigidBox Pro for 3 years now. Their consistency, attention to detail,
@@ -3680,7 +3573,8 @@ Top Bar .top-bar {
             <div class="elevate-container">
 
                 <div class="elevate-image-col">
-                    <img src="./assets/Box Collage.png" alt="Custom colorful design boxes" class="elevate-main-img">
+
+                    <img src="{{asset('images/home/Elevate-boxes.svg')}}" alt="Custom colorful design boxes" class="elevate-main-img">
                 </div>
 
                 <div class="elevate-content-col">
@@ -3811,3 +3705,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 </body>
+</html>

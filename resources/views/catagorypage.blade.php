@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+@include('include.header')
+>>>>>>> d5aebe3660bb7d95913c9fdafede8f56a7d02298
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -88,13 +92,12 @@ img { display: block; max-width: 100%; }
 
 /* Two-column grid */
 .cp-hero-grid {
-    margin-top: -170px;
+    margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 48px;
-    margin-bottom: 24px;
-    margin-bottom: -79px;
+    margin-bottom: 60px;
 }
 
 /* LEFT — text */
@@ -1479,11 +1482,17 @@ img { display: block; max-width: 100%; }
     .pg-cta-btn   { font-size: 4vw; padding: 3vw 7vw; }
 }
 
+<<<<<<< HEAD
 </style>
 
 
+=======
+
+</style>
+>>>>>>> d5aebe3660bb7d95913c9fdafede8f56a7d02298
 
 <section class="cp-hero">
+
     <div class="cp-wrap">
 
         <!-- Breadcrumb -->

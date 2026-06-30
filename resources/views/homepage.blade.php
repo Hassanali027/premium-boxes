@@ -1,3 +1,4 @@
+@include('include.header')
  <style>
 /* Base Styles & Variables */
 :root {
@@ -27,6 +28,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   justify-content: center;
+  padding-top: 115px; /* Fixed header height (top bar + navbar) */
 }
 .container {
   width: 100%;
@@ -550,11 +552,7 @@ h3 {
 .home-hero {
   padding: 80px 0;
   border-bottom: 1px solid var(--border-color);
-  background: radial-gradient(
-    circle at center,
-    rgba(30, 30, 30, 0.8) 0%,
-    var(--bg-dark) 100%
-  );
+  background: #1A1A1A;
 }
 
 .home-hero-content {
@@ -736,30 +734,32 @@ h3 {
 .sectors-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 24px;
   margin-bottom: 50px;
 }
 
 .sector-card {
-  background-color: var(--bg-dark);
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #222;
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 16px;
   transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .sector-card:hover {
-  transform: translateY(-5px);
-  border-color: #444;
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 .sector-img-placeholder {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  height: auto;
-  background-color: #242424;
+  aspect-ratio: 1.1 / 1;
+  background-color: #262626;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
 }
@@ -774,26 +774,22 @@ h3 {
 }
 
 .sector-info {
-  padding: 20px;
+  padding: 16px 0 0 0;
 }
 
 .sector-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
 }
 
 .sector-info p {
-  font-size: 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
   color: var(--text-muted);
-  /* line-height: 1.4; */
-  font-family: Inter;
+  line-height: 1.5;
   font-weight: 400;
-  font-style: Regular;
-  font-size: 14px;
-  padding-bottom: NONE;
-  line-height: 20px;
-  letter-spacing: 2%;
-  vertical-align: middle;
 }
 
 .sectors-action {
@@ -2229,11 +2225,28 @@ section + section {
   .hero-text-container h1,
   .story-text h2,
   .why-text h2,
-  .sectors-header h2,
   .premium-header h2,
   .blog-header h2 {
     font-size: 2rem !important;
     line-height: 1.2 !important;
+  }
+
+  .sectors-header h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.25 !important;
+    white-space: nowrap;
+    margin-bottom: 12px;
+  }
+
+  .sectors-header p {
+    max-width: 320px;
+    margin: 0 auto;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .sectors-header br {
+    display: none;
   }
 
   .hero-buttons {
@@ -2458,12 +2471,12 @@ section + section {
   }
 
   .reviews-strip {
-    padding: 30px 0 !important;
-    background: #141414;
+    padding: 20px 0 40px !important;
+    background: transparent !important;
   }
 
   .reviews-strip .reviews-rating {
-    display: none;
+    display: none !important;
   }
 
   .reviews-strip .reviews-content {
@@ -2471,9 +2484,10 @@ section + section {
   }
 
   .reviews-strip .brand-logos {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 24px !important;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 20px !important;
     width: 100%;
     align-items: center;
   }
@@ -2488,7 +2502,7 @@ section + section {
   }
 
   .reviews-strip .brand-logos img:nth-child(n + 5) {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -2528,11 +2542,13 @@ section + section {
     padding-left: 20px !important;
   }
 
-  .styles-section .sectors-header {
+  .styles-section .sectors-header,
+  .sectors-section .sectors-header {
     margin-bottom: 46px;
   }
 
-  .styles-section .section-badge-text {
+  .styles-section .section-badge-text,
+  .sectors-section .section-badge-text {
     min-width: 148px;
     margin-bottom: 16px;
     padding: 8px 16px;
@@ -2540,18 +2556,25 @@ section + section {
     line-height: 1.4;
   }
 
-  .styles-section .sectors-header h2 {
+  .styles-section .sectors-header h2,
+  .sectors-section .sectors-header h2 {
     margin-bottom: 12px;
-    font-size: 1.72rem !important;
+    font-size: 1.5rem !important;
     line-height: 1.25 !important;
+    white-space: nowrap;
   }
 
-  .styles-section .sectors-header p {
-    max-width: 410px;
+  .styles-section .sectors-header p,
+  .sectors-section .sectors-header p {
+    max-width: 320px;
     margin: 0 auto;
     color: #c5c5c5;
-    font-size: 0.96rem;
-    line-height: 1.7;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .sectors-header p br {
+    display: none;
   }
 
   .styles-section .styles-grid {
@@ -2601,6 +2624,13 @@ section + section {
 
   .styles-section .style-card h4 {
     font-size: 0.86rem;
+  }
+
+  .styles-section .sectors-header p,
+  .sectors-section .sectors-header p {
+    font-size: 0.78rem;
+    max-width: 100%;
+    padding: 0 5px;
   }
 }
 
@@ -2665,6 +2695,7 @@ section + section {
   .craftsmanship-text-overlay {
     width: 100% !important;
     padding: 0 20px !important;
+    text-align: left;
   }
 
   .craftsmanship-text-overlay .section-badge-text {
@@ -2672,20 +2703,21 @@ section + section {
     padding: 8px 16px;
     font-size: 0.73rem;
     line-height: 1.35;
+    display: inline-block;
   }
 
   .craftsmanship-text-overlay h2 {
     margin-bottom: 14px;
-    font-size: 1.72rem !important;
-    line-height: 1.2 !important;
+    font-size: 1.65rem !important;
+    line-height: 1.25 !important;
   }
 
   .craftsmanship-text-overlay p {
     margin: 0;
     color: #d0d0d0;
-    font-size: 0.97rem;
-    line-height: 1.72;
-    text-align: justify;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: left;
   }
 }
 
@@ -2696,15 +2728,17 @@ section + section {
 
   .craftsmanship-text-overlay {
     padding: 0 18px !important;
+    text-align: left;
   }
 
   .craftsmanship-text-overlay h2 {
-    font-size: 1.55rem !important;
+    font-size: 1.35rem !important;
   }
 
   .craftsmanship-text-overlay p {
     font-size: 0.9rem;
     line-height: 1.65;
+    text-align: left;
   }
 }
 
@@ -3488,12 +3522,12 @@ section + section {
     <div class="reviews-strip">
         <div class="container reviews-content">
             <div class="reviews-rating">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                <div class="stars" style="display: flex; gap: 4px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#f5c542" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
                 <a href="#" class="reviews-link">5.0 Google Reviews</a>
             </div>
@@ -3518,7 +3552,7 @@ section + section {
             <div class="sectors-grid">
                 <div class="sector-card">
                     <div class="sector-img-placeholder">
-                        <img src="./assets/jewellry and watch.jfif" alt="">
+                        <img src="./assets/jewellry and watch.jfif" onerror="this.style.display='none'" alt="">
                     </div>
                     <div class="sector-info">
                         <h3>Jewellery & Watches</h3>
@@ -3527,7 +3561,7 @@ section + section {
                 </div>
                 <div class="sector-card">
                     <div class="sector-img-placeholder">
-                        <img src="./assets/jewellry and watch.jfif" alt="">
+                        <img src="./assets/jewellry and watch.jfif" onerror="this.style.display='none'" alt="">
                     </div>
                     <div class="sector-info">
                         <h3>Jewellery & Watches</h3>
@@ -3536,7 +3570,7 @@ section + section {
                 </div>
                 <div class="sector-card">
                     <div class="sector-img-placeholder">
-                        <img src="./assets/jewellry and watch.jfif" alt="">
+                        <img src="./assets/jewellry and watch.jfif" onerror="this.style.display='none'" alt="">
                     </div>
                     <div class="sector-info">
                         <h3>Jewellery & Watches</h3>
@@ -3545,7 +3579,7 @@ section + section {
                 </div>
                 <div class="sector-card">
                     <div class="sector-img-placeholder">
-                        <img src="./assets/jewellry and watch.jfif" alt="">
+                        <img src="./assets/jewellry and watch.jfif" onerror="this.style.display='none'" alt="">
                     </div>
                     <div class="sector-info">
                         <h3>Jewellery & Watches</h3>
@@ -3554,7 +3588,7 @@ section + section {
                 </div>
                 <div class="sector-card">
                     <div class="sector-img-placeholder">
-                        <img src="./assets/jewellry and watch.jfif" alt="">
+                        <img src="./assets/jewellry and watch.jfif" onerror="this.style.display='none'" alt="">
                     </div>
                     <div class="sector-info">
                         <h3>Jewellery & Watches</h3>
@@ -3563,7 +3597,7 @@ section + section {
                 </div>
                 <div class="sector-card">
                     <div class="sector-img-placeholder">
-                        <img src="./assets/jewellry and watch.jfif" alt="">
+                        <img src="./assets/jewellry and watch.jfif" onerror="this.style.display='none'" alt="">
                     </div>
                     <div class="sector-info">
                         <h3>Jewellery & Watches</h3>
@@ -3572,7 +3606,7 @@ section + section {
                 </div>
                 <div class="sector-card">
                     <div class="sector-img-placeholder">
-                        <img src="./assets/jewellry and watch.jfif" alt="">
+                        <img src="./assets/jewellry and watch.jfif" onerror="this.style.display='none'" alt="">
                     </div>
                     <div class="sector-info">
                         <h3>Jewellery & Watches</h3>
@@ -3581,7 +3615,7 @@ section + section {
                 </div>
                 <div class="sector-card">
                     <div class="sector-img-placeholder">
-                        <img src="./assets/jewellry and watch.jfif" alt="">
+                        <img src="./assets/jewellry and watch.jfif" onerror="this.style.display='none'" alt="">
                     </div>
                     <div class="sector-info">
                         <h3>Jewellery & Watches</h3>
@@ -3797,7 +3831,7 @@ section + section {
             <div class="testimonial-grid">
 
                 <div class="testimonial-card">
-                    <img src="./assets/profile picture.jfif" alt="">
+                    <img src="{{asset('images/home/testimonal-profileimage.svg')}}" alt="Mike Torello" class="avatar-img">
                     <p>
                         We've been working with RigidBox Pro for 3 years now.
                         Their consistency and attention to detail make them our
@@ -3809,7 +3843,7 @@ section + section {
                 </div>
 
                 <div class="testimonial-card">
-                    <img src="./assets/profile picture.jfif" alt="">
+                      <img src="{{asset('images/home/testimonal-profileimage.svg')}}"alt="Mike Torello" class="avatar-img">
                     <p>
                         We've been working with RigidBox Pro for 3 years now.
                         Their consistency and attention to detail make them our
@@ -3821,7 +3855,7 @@ section + section {
                 </div>
 
                 <div class="testimonial-card">
-                    <img src="./assets/profile picture.jfif" alt="">
+                    <img src="{{asset('images/home/testimonal-profileimage.svg')}}" alt="Mike Torello" class="avatar-img">
                     <p>
                         We've been working with RigidBox Pro for 3 years now.
                         Their consistency and attention to detail make them our
@@ -3835,8 +3869,8 @@ section + section {
             </div>
 
             <div class="testimonial-nav">
-                <button><i class="fas fa-chevron-left"></i></button>
-                <button><i class="fas fa-chevron-right"></i></button>
+                <button><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                <button><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
             </div>
 
         </div>
